@@ -618,7 +618,7 @@ function step1(){
       <label>เบอร์โทร<input name="tel" required maxlength="20" inputmode="tel" value="${esc(f.tel)}" placeholder="08x-xxx-xxxx"></label>
       <label>ชื่อเล่นผู้เรียน<input name="kid" required maxlength="40" value="${esc(f.kid)}" placeholder="เช่น น้องภูมิ"></label>
       <label>ชั้น / อายุ<input name="age" maxlength="30" value="${esc(f.age)}" placeholder="เช่น ป.5 / 10 ขวบ"></label>
-      <label>LINE ID หรืออีเมล (ไว้ส่งลิงก์กลุ่มเรียน)<input name="contact" maxlength="80" value="${esc(f.contact)}" placeholder="ไม่บังคับ"></label>
+      <label>LINE ID (ไม่บังคับ)<input name="contact" maxlength="80" value="${esc(f.contact)}" placeholder="LINE ID ไม่ใช่ชื่อที่แสดงใน LINE"><small style="color:var(--muted);font-size:12px;font-weight:400">ดูได้ที่ LINE › ตั้งค่า › โปรไฟล์ › ID · หลังจองเสร็จกดแอด LINE ของเราจะยืนยันได้เร็วที่สุด</small></label>
       <label>เคยใช้ AI มาก่อนไหม<select name="exp">${["ยังไม่เคยเลย","เคยเล่นนิดหน่อย","ใช้บ่อยแล้ว"].map(o=>`<option ${f.exp===o?"selected":""}>${o}</option>`).join("")}</select></label>
       <div class="full acts"><button class="btn" type="submit">ถัดไป: เลือกวิธีชำระ →</button></div>
     </form>`;
@@ -718,11 +718,19 @@ function done(demo){
       <div class="big">🎉</div>
       <h3 class="mitr" style="font-size:24px">${demo ? "ตัวอย่างหน้ายืนยัน (โหมดทดลอง)" : "รับจองแล้ว!"}</h3>
       <div class="code">${B.code}</div>
-      <p style="max-width:460px;color:var(--ink2)">${esc(f.kid)} · ${r.title} · ${r.days}<br>ชำระแล้ว ฿${fmt(p.amount)}${p.balance ? ` · คงเหลือ ฿${fmt(p.balance)} จ่ายวันเรียนครั้งแรก` : ""}<br>แอดมินจะตรวจสลิปและส่งลิงก์กลุ่มเรียนให้ภายใน 24 ชม.</p>
-      <a class="btn line" href="${CONFIG.lineUrl}" target="_blank" rel="noopener">แอด LINE ไว้รับข่าวคลาส</a>
+      <p style="max-width:460px;color:var(--ink2)">${esc(f.kid)} · ${r.title} · ${r.days}<br>ชำระแล้ว ฿${fmt(p.amount)}${p.balance ? ` · คงเหลือ ฿${fmt(p.balance)} จ่ายวันเรียนครั้งแรก` : ""}</p>
+      <div style="max-width:460px;background:var(--sun2);border:2.5px solid var(--line);border-radius:16px;padding:14px 16px;text-align:left;display:grid;gap:8px">
+        <b class="mitr" style="font-size:17px">ขั้นสุดท้าย · รับการยืนยันทาง LINE</b>
+        <span style="font-size:14px">1) กดปุ่มด้านล่างเพื่อแอด LINE Giraffe Media Lab<br>2) พิมพ์รหัสจอง <b>${B.code}</b> ส่งมาในแชท<br>แอดมินจะยืนยันที่นั่งและส่งรายละเอียดคลาสให้ทางแชทนั้นครับ</span>
+      </div>
+      <a class="btn line" href="${CONFIG.lineUrl}" target="_blank" rel="noopener" id="lineGo">แอด LINE + ส่งรหัส ${B.code}</a>
+      <button class="btn ghost sm" id="copyCode">คัดลอกรหัสจอง</button>
       <button class="btn ghost sm" id="close2">ปิดหน้าต่าง</button>
     </div>`;
   $("#close2").onclick = closeModal;
+  const cp = () => { try{ navigator.clipboard && navigator.clipboard.writeText(B.code); }catch(e){} };
+  $("#copyCode").onclick = () => { cp(); $("#copyCode").textContent = "คัดลอกแล้ว ✓"; };
+  $("#lineGo").addEventListener("click", cp);
 }
 
 /* ---------- interest flow (locked rooms) ---------- */
