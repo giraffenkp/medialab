@@ -138,6 +138,14 @@ section{padding:34px 0 60px}
 footer{background:var(--ink);color:#d9cbbd;padding:28px 0;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1850415416407675');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1850415416407675&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <header>
@@ -285,6 +293,7 @@ function render(){
 }
 function open(id){
   const c = CLIPS.find(x => x.id === id); if(!c) return;
+  if (window.fbq) fbq('trackCustom','WatchShowcase',{clip:c.id});
   const scr = c.embed ? `<iframe src="${c.embed}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
     : c.src ? `<video src="${c.src}" ${c.poster?`poster="${c.poster}"`:""} controls playsinline autoplay></video>`
     : `<div class="soonbox" style="background:${c.bg};color:var(--ink)"><div><div style="font-size:90px">${c.emo}</div><div class="px" style="font-size:14px">COMING SOON</div><p class="mitr" style="margin-top:6px">เปิดฉายเร็วๆ นี้</p></div></div>`;
