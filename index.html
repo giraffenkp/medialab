@@ -797,7 +797,7 @@ function openInterest(id){
     $("#isub").disabled = true; $("#isub").textContent = "กำลังส่ง...";
     try{
       if(LIVE){ const res = await post({ type:"interest", room:r.id, roomTitle:r.title, ...d }); if(!res.ok) throw 0; refresh(); }
-      px('Lead', {content_name:'interest-'+r.id});
+      if(LIVE) px('Lead', {content_name:'interest-'+r.id});
       $("#fi").outerHTML = `<div class="done"><div class="big">🙌</div><h3 class="mitr">ขอบคุณครับ ${esc(d.name)}</h3><p style="color:var(--ink2)">เปิดคลาส ${r.title} เมื่อไหร่ เราจะติดต่อกลับทาง ${esc(d.contact)} ก่อนใคร</p><button class="btn ghost sm" id="close3">ปิด</button></div>`;
       $("#close3").onclick = closeModal;
     }catch(err){ $("#ierr").textContent = "ส่งไม่สำเร็จ ลองใหม่อีกครั้งนะครับ"; $("#isub").disabled = false; $("#isub").textContent = "🙋 ลงชื่อว่าสนใจ"; }
