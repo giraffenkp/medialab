@@ -134,6 +134,10 @@ section{padding:34px 0 60px}
 .x{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:2.5px solid var(--line);background:var(--paper);font-size:18px;cursor:pointer;z-index:2}
 .learn{background:var(--paper);border:2.5px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14px}
 @media(max-width:720px){.modal{grid-template-columns:1fr}.screen{max-height:62vh;aspect-ratio:auto;height:62vh}}
+.modal.wide{max-width:960px;grid-template-columns:1fr;margin-block:auto}
+.modal.wide .screen{aspect-ratio:16/9;max-height:none;height:auto}
+.modal.wide .screen video{width:100%;object-fit:contain}
+@media(max-width:720px){.modal.wide .screen{height:auto;aspect-ratio:16/9}}
 
 footer{background:var(--ink);color:#d9cbbd;padding:28px 0;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
@@ -237,7 +241,7 @@ const CATS = [
 const CLIPS = [
   {id:"r3", cat:"ad", title:"เขียนโค้ดไม่เป็น สร้างเว็บได้ไหม?", line:"โฆษณา 11 วิ ของคอร์ส AI Web Builder · Giraffe Boy สร้างเว็บกลางอากาศ", by:"teacher", maker:"ครู Gu Guy", room:"web", src:"v/r3-web-builder.mp4", poster:"p/r3.jpg", tools:"Google Flow + ตัดต่อ", time:"~2 ชม.", bg:"#d9f3fd", emo:"🌐"},
   {id:"kaiju", cat:"action", title:"ปลาบึกยักษ์โผล่กลางแม่น้ำโขง", line:"คลิปสั้น 35 วิ · ไคจูปลาบึกโผล่กลางโขง แล้ว Giraffe Boy ได้เพื่อนใหม่ขี่ข้ามฟาก", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/kaiju-mekong.mp4", poster:"p/kaiju-mekong.jpg", tools:"Google Flow (Omni 1.2) 3 ช่วงต่อกัน + ตัดต่อ", time:"1 คืน", bg:"#2fb2e6", emo:"🐟"},
-  {id:"anime", cat:"action", title:"Giraffe Boy ร่างสุดท้าย", line:"ฉากแปลงร่างแบบอนิเมะ ลมพัด แสงพุ่ง ท่าเท่ก่อนออกบู๊", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#f48fb8", emo:"💥"},
+  {id:"anime", cat:"action", title:"Giraffe Boy ร่างสุดท้าย", line:"คลิปสั้น 35 วิ · ฉากแปลงร่างแบบอนิเมะ ปลุกพลังบนดาดฟ้าริมโขง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/anime-final-form.mp4", poster:"p/anime-final-form.jpg", wide:true, tools:"Google Flow (Omni 1.2) 3 ช่วงต่อกัน + ตัดต่อ", time:"1 ชั่วโมง", bg:"#f48fb8", emo:"💥"},
   {id:"cafe", cat:"ad", title:"โฆษณาร้านกาแฟริมโขง 15 วิ", line:"ตัวอย่าง TVC ร้านค้าจริงในนครพนม ทำจบได้โดยไม่ต้องจ้างกองถ่าย", by:"teacher", maker:"ครู Gu Guy", room:"web", tools:"Google Flow + Claude", time:"—", bg:"#ffd75e", emo:"☕"},
   {id:"review", cat:"ad", title:"Giraffe Boy รีวิวของเล่นจากอนาคต", line:"คลิปรีวิวสินค้าแบบยูทูบเบอร์ กล่องเปิดออกแล้วของเล่นมีชีวิต", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#ffe3ef", emo:"📦"},
   {id:"cat", cat:"edu", title:"Dr.Spelling ถอดรหัสคำว่า CAT", line:"คลิปสอนสะกดคำของเพจยีราฟ นครพนม ทำด้วย AI ใช้สอนจริงในห้อง", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow + ตัดต่อ", time:"—", bg:"#ffe3ef", emo:"🔤"},
@@ -307,6 +311,7 @@ function open(id){
       <div class="learn"><b class="mitr">อยากทำคลิปแบบนี้?</b><br>ทักษะนี้สอนในห้อง <b>${ROOMS[c.room]}</b> คิดเรื่องเอง แล้วใช้ AI คราฟท์ออกมาเป็นผลงานจริง</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="../#rooms">ดูห้องเรียนและจองที่นั่ง</a><button class="btn ghost sm" id="share">แชร์คลิปนี้</button></div>
     </div>`;
+  $("#modal").classList.toggle("wide", !!c.wide);
   $("#ov").classList.add("show"); document.body.style.overflow = "hidden";
   history.replaceState(null, "", "#" + c.id);
   $("#x").onclick = close;
@@ -316,7 +321,7 @@ function open(id){
   };
 }
 function close(){
-  $("#ov").classList.remove("show"); $("#modal").innerHTML = ""; document.body.style.overflow = "";
+  $("#ov").classList.remove("show"); $("#modal").innerHTML = ""; $("#modal").classList.remove("wide"); document.body.style.overflow = "";
   history.replaceState(null, "", location.pathname);
 }
 document.addEventListener("click", e => {
