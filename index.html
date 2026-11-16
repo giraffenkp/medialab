@@ -304,7 +304,7 @@ fbq('track','PageView');
       </div>
       <div class="tabs" id="tabs">
         <button class="tab on" data-f="all">ทั้งหมด</button>
-        <button class="tab" data-f="kid">เด็ก ป.4–ม.3</button>
+        <button class="tab" data-f="kid">เด็ก อนุบาล–ม.3</button>
         <button class="tab" data-f="adult">ม.4 ขึ้นไป / ผู้ใหญ่</button>
         <button class="tab" data-f="trial">ทดลองเรียน</button>
       </div>
@@ -408,7 +408,7 @@ fbq('track','PageView');
   <div class="wrap">
     <div class="sec-head"><div><span class="kicker px">FAQ</span><h2>คำถามที่ผู้ปกครองถามบ่อย</h2></div></div>
     <div class="faq">
-      <details><summary>ลูกยังเล็ก ใช้ AI จะเร็วเกินไปไหม?</summary><p>คอร์สเด็กเปิดให้ ป.4 ขึ้นไป ซึ่งเป็นวัยที่อ่านคำสั่งและเล่าเรื่องได้แล้ว เราใช้ AI เป็นแค่เครื่องมือ ส่วนไอเดีย เรื่องราว และการตัดสินใจทั้งหมดเป็นของเด็กเอง ครูดูแลการใช้งานทุกขั้น</p></details>
+      <details><summary>ลูกยังเล็ก ใช้ AI จะเร็วเกินไปไหม?</summary><p>คอร์สเด็กเปิดรับตั้งแต่อนุบาลถึง ม.3 น้องเล็กที่ยังอ่านคำสั่งเองไม่คล่อง ครูจะช่วยทำทุกขั้น เราใช้ AI เป็นแค่เครื่องมือ ส่วนไอเดีย เรื่องราว และการตัดสินใจทั้งหมดเป็นของเด็กเอง ครูดูแลการใช้งานทุกขั้น</p></details>
       <details><summary>ต้องเตรียมอุปกรณ์อะไรบ้าง?</summary><p>คอร์สเด็ก: มือถือหรือแท็บเล็ตที่ชาร์จเต็ม พร้อมหูฟัง 1 อัน คอร์สสร้างเว็บ: ต้องใช้โน้ตบุ๊ก ถ้าไม่มี ทักมาคุยกันก่อนได้</p></details>
       <details><summary>ต้องสมัครแอปหรือจ่ายค่า AI เพิ่มไหม?</summary><p>ไม่ต้องจ่ายเพิ่ม ในคลาสเราใช้เครื่องมือเวอร์ชันฟรีเป็นหลัก สำหรับเด็กที่อายุยังไม่ถึงเกณฑ์ของบางแอป ครูจะใช้บัญชีของครูทำให้ดูในคลาส และแนะนำให้ผู้ปกครองดูแลบัญชีของลูก</p></details>
       <details><summary>ขาดเรียนได้ไหม?</summary><p>ได้ ครูจะส่งสรุปและงานของครั้งนั้นในกลุ่ม LINE ให้ตามทัน และมาถามเพิ่มได้ก่อนคลาสถัดไป</p></details>
@@ -450,7 +450,7 @@ const CONFIG = {
 };
 const ROOMS = [
   { id:"creator", no:"01", type:"kid", icon:"🎬", status:"open",
-    title:"AI Creator Lab", who:"ป.4 – ม.3 (อายุ 9–15 ปี)",
+    title:"AI Creator Lab", who:"อนุบาล – ม.3 (น้องเล็กครูช่วยทำทุกขั้น)",
     tagline:"สร้างตัวละคร เขียนเรื่อง ทำคลิปสั้นของตัวเองด้วย AI",
     days:"อังคาร + พฤหัส 17:30–19:00", start:"เริ่ม อ. 1 ธ.ค. 2026", sessions:"8 ครั้ง + Demo Day",
     price:2990, early:2490, seats:10, taken:0,
@@ -485,7 +485,7 @@ const ROOMS = [
     note:"ดูตัวอย่างเว็บที่ครูทำด้วยวิธีนี้ได้ที่ satoshi.film"
   },
   { id:"trial-kid", no:"T1", type:"trial", icon:"🧪", status:"trial",
-    title:"Open Lab: ลองทำคลิป AI", who:"เด็ก ป.4 – ม.3 (ผู้ปกครองนั่งดูได้)",
+    title:"Open Lab: ลองทำคลิป AI", who:"เด็ก อนุบาล – ม.3 (ผู้ปกครองนั่งดูได้)",
     tagline:"ลองเรียน 1 ครั้ง ออกแบบตัวละครและทำคลิปแรกกลับบ้าน",
     days:"พุธ 25 พ.ย. 17:30–19:00", start:"ครั้งเดียว", sessions:"1 ครั้ง",
     price:390, early:null, seats:10, taken:0, trial:true,
@@ -505,11 +505,11 @@ const ROOMS = [
     note:"สมัครคอร์ส AI Web Builder ต่อในวันนั้น นำค่าทดลองเรียน 390 บาทไปหักจากค่าคอร์สได้"
   },
   { id:"money", no:"03", type:"kid", icon:"🪙", status:"soon", interest:0,
-    title:"Money Quest", who:"ป.4 – ม.3", tagline:"เงินมาจากไหน? ทำไมขนมแพงขึ้นทุกปี? เรียนเรื่องเงินผ่านเกม", days:"ม.ค. 2027" },
+    title:"Money Quest", who:"อนุบาล – ม.3", tagline:"เงินมาจากไหน? ทำไมขนมแพงขึ้นทุกปี? เรียนเรื่องเงินผ่านเกม", days:"ม.ค. 2027" },
   { id:"scifi", no:"04", type:"kid", icon:"🚀", status:"soon", interest:0,
-    title:"Sci-Fi Lab", who:"ป.4 – ม.3", tagline:"ดูฉากจากหนังไซไฟ แล้วทดลองว่าวิทยาศาสตร์จริงทำได้ไหม", days:"เร็วๆ นี้" },
+    title:"Sci-Fi Lab", who:"อนุบาล – ม.3", tagline:"ดูฉากจากหนังไซไฟ แล้วทดลองว่าวิทยาศาสตร์จริงทำได้ไหม", days:"เร็วๆ นี้" },
   { id:"robot", no:"05", type:"kid", icon:"🤖", status:"soon", interest:0,
-    title:"Robot Builder", who:"ป.4 – ม.3", tagline:"ประกอบและเขียนคำสั่งหุ่นยนต์ตัวแรก", days:"เร็วๆ นี้" },
+    title:"Robot Builder", who:"อนุบาล – ม.3", tagline:"ประกอบและเขียนคำสั่งหุ่นยนต์ตัวแรก", days:"เร็วๆ นี้" },
   { id:"cine", no:"06", type:"adult", icon:"🎞️", status:"soon", interest:0,
     title:"Cine Club", who:"วัยรุ่น / ผู้ใหญ่", tagline:"ดูหนังหรือสารคดีด้วยกันจนจบ แล้วนั่งคุยกันต่อ", days:"เร็วๆ นี้" }
 ];
