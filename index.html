@@ -215,6 +215,9 @@ form.book .full{grid-column:1/-1}
 .seats i.t{background:var(--pink)}
 .seats i.t.flash{animation:flash .8s 2}
 @keyframes flash{50%{background:var(--sun)}}
+#openlab,#openlab-adult{scroll-margin-top:84px;scroll-margin-bottom:16px}
+.room.hi{animation:hiPulse .9s ease-in-out 3}
+@keyframes hiPulse{50%{border-color:var(--sun);box-shadow:0 0 0 5px var(--sun),6px 6px 0 rgba(0,0,0,.35)}}
 .interest-n{font-size:13px;background:var(--sun2);border:1.5px solid var(--line);border-radius:8px;padding:2px 8px;align-self:flex-start}
 .steps{display:flex;gap:6px;margin-bottom:4px}
 .steps span{flex:1;height:6px;border-radius:3px;background:#e6dccf}
@@ -567,12 +570,16 @@ function statusPill(r){
   if(r.status === "trial") return `<span class="pill trial">ทดลองเรียน</span>`;
   return `<span class="pill open">เปิดรับสมัคร</span>`;
 }
+/* deep link: #openlab / #openlab-adult → การ์ด Open Lab (ใช้ในแอด) */
+const DEEP = { "trial-kid":"openlab", "trial-web":"openlab-adult" };
+let hiRoom = null, hiUntil = 0;
+const cardAttr = r => (DEEP[r.id] ? ` id="${DEEP[r.id]}"` : "") + (r.id === hiRoom && Date.now() < hiUntil ? " data-hi" : "");
 function render(){
   const grid = $("#roomGrid");
   grid.innerHTML = ROOMS.filter(r => currentFilter === "all" || r.type === currentFilter).map(r => {
     const cls = r.type === "kid" ? "t-kid" : r.type === "adult" ? "t-adult" : "t-trial";
     if(r.status === "soon") return `
-      <article class="room locked ${cls}">
+      <article class="room locked ${cls}"${cardAttr(r)}>
         <div class="room-top"><span class="px">ROOM ${r.no}</span>${statusPill(r)}</div>
         <div class="room-body"><h3><span class="ico">${r.icon}</span>${r.title}</h3><div class="who">${r.who}</div><p style="font-size:15px">${r.tagline}</p><div class="meta"><span>เปิด</span><span>${r.days}</span></div>
         ${r.interest > 0 ? `<span class="interest-n">👀 สนใจแล้ว ${r.interest} คน</span>` : ""}</div>
@@ -580,7 +587,7 @@ function render(){
       </article>`;
     const full = r.seats - r.taken <= 0;
     return `
-      <article class="room ${cls}">
+      <article class="room ${cls}"${cardAttr(r)}>
         <div class="room-top"><span class="px">ROOM ${r.no}</span>${statusPill(r)}</div>
         <div class="room-body">
           <h3><span class="ico">${r.icon}</span>${r.title}</h3>
@@ -594,12 +601,28 @@ function render(){
       </article>`;
   }).join("");
   ROOMS.forEach(r => r._flash = false);
+  grid.querySelectorAll("[data-hi]").forEach(el => el.classList.add("hi"));
 }
 $("#tabs").addEventListener("click", e => {
   const b = e.target.closest(".tab"); if(!b) return;
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t === b));
   currentFilter = b.dataset.f; render();
 });
+function goDeep(){
+  const target = decodeURIComponent(location.hash.slice(1));
+  const roomId = Object.keys(DEEP).find(k => DEEP[k] === target);
+  if(!roomId) return;
+  const tab = document.querySelector('.tab[data-f="trial"]');
+  if(tab){ document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t === tab)); currentFilter = "trial"; }
+  hiRoom = roomId; hiUntil = Date.now() + 2800;
+  render();
+  const el = document.getElementById(target);
+  if(el) requestAnimationFrame(() => el.scrollIntoView({ behavior:"smooth", block:"center" }));
+  setTimeout(() => { hiRoom = null; document.querySelectorAll(".room.hi").forEach(x => x.classList.remove("hi")); }, 2900);
+}
+function goDeepWhenReady(){ (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(goDeep, goDeep); }
+if(document.readyState === "complete") goDeepWhenReady(); else window.addEventListener("load", goDeepWhenReady);
+window.addEventListener("hashchange", goDeep);
 
 /* ---------- live status ---------- */
 async function refresh(){
