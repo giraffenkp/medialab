@@ -663,7 +663,7 @@ new MutationObserver(obarSync).observe($("#ov"), { attributes:true, attributeFil
 new MutationObserver(obarSync).observe($("#live"), { attributes:true, attributeFilter:["class"] });
 if("ResizeObserver" in window) new ResizeObserver(() => document.body.style.setProperty("--obar-h", $("#obar").offsetHeight + "px")).observe($("#obar"));
 $("#obarBtn").addEventListener("click", () => {
-  px("ViewContent", { content_name:"Open Lab sticky" });
+  try { if (window.fbq) fbq("trackCustom", "StickyOpenLab"); } catch(e){}
   goDeep(DEEP[OBAR_ROOM]);
   openRoom(OBAR_ROOM);
 });
