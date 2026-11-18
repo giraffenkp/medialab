@@ -236,7 +236,7 @@ const CATS = [
   {id:"surreal", name:"🌀 Surreal Art"},
   {id:"drama", name:"🎭 ละครสั้น"},
   {id:"funny", name:"😂 ตลก & เทรนด์"},
-  {id:"horror", name:"🧟 สยองขวัญ (ขำๆ)"}
+  {id:"style", name:"🎨 ทดลองสไตล์"}
 ];
 const CLIPS = [
   {id:"r3", cat:"ad", title:"เขียนโค้ดไม่เป็น สร้างเว็บได้ไหม?", line:"โฆษณา 11 วิ ของคอร์ส AI Web Builder · Giraffe Boy สร้างเว็บกลางอากาศ", by:"teacher", maker:"ครู Gu Guy", room:"web", src:"v/r3-web-builder.mp4", poster:"p/r3.jpg", tools:"Google Flow + ตัดต่อ", time:"~2 ชม.", bg:"#d9f3fd", emo:"🌐"},
@@ -245,13 +245,13 @@ const CLIPS = [
   {id:"cafe", cat:"ad", title:"Giraffe Coffee Lab · โฆษณาร้านกาแฟ", line:"คลิปสั้น 38 วิ · โฆษณาสมมติ Giraffe Boy เปิดร้านกาแฟที่ดริปด้วยอุปกรณ์แล็บ", by:"teacher", maker:"ครู Gu Guy", room:"web", src:"v/coffee-lab.mp4", poster:"p/coffee-lab.jpg", wide:true, tools:"Google Flow (Omni 1.2) 3 ช่วงต่อกัน + ตัดต่อ", time:"1 ชั่วโมง", bg:"#ffd75e", emo:"☕"},
   {id:"review", cat:"ad", title:"Giraffe Boy รีวิวของเล่นจากอนาคต", line:"คลิปรีวิวสินค้าแบบยูทูบเบอร์ กล่องเปิดออกแล้วของเล่นมีชีวิต", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#ffe3ef", emo:"📦"},
   {id:"cat", cat:"edu", title:"Dr.Spelling ถอดรหัสคำว่า RUN", line:"คลิปสอนสะกดคำ 34 วิ ที่ใช้จริงในเพจยีราฟ นครพนม · R-U-N อ่านว่า รัน แปลว่า วิ่ง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/dr-spelling-run.mp4", poster:"p/dr-spelling-run.jpg", tools:"Google Flow (Omni 1.2) + ตัดต่อ ใส่ตัวอักษร", time:"1 ชั่วโมง", bg:"#ffe3ef", emo:"🔤"},
-  {id:"science", cat:"science", title:"ภูเขาไฟฟองยักษ์", line:"Giraffe Boy เทสารในขวดทดลองแล้วฟองพุ่งท่วมห้องแล็บ พร้อมอธิบายว่าทำไม", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#d7f5dc", emo:"🌋"},
+  {id:"science", cat:"science", title:"ภูเขาไฟฟองยักษ์", line:"คลิปสั้น 31 วิ · Giraffe Boy เทสารในขวดทดลองแล้วฟองพุ่งท่วมห้องแล็บ พร้อมอธิบายว่าทำไม", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/foam-volcano.mp4", poster:"p/foam-volcano.jpg", wide:true, tools:"Google Flow", time:"—", bg:"#d7f5dc", emo:"🌋"},
   {id:"game", cat:"game", title:"หลุดเข้าไปในเกม 8-bit", line:"คลิปสั้น 31 วิ · กดปุ่มผิดครั้งเดียว Giraffe Boy กลายเป็นตัวละครพิกเซลต้องผ่านด่านให้ได้", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/game-8bit.mp4", poster:"p/game-8bit.jpg", wide:true, tools:"Google Flow", time:"—", bg:"#c9b6ff", emo:"🕹️"},
   {id:"whale", cat:"surreal", title:"วาฬบินเหนือแม่น้ำโขง", line:"คลิปสั้น 32 วิ · วิดีโออาร์ตยามเช้า วาฬกระดาษลอยข้ามเมือง ภาพแบบในความฝัน", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/whale-mekong.mp4", poster:"p/whale-mekong.jpg", tools:"Google Flow", time:"~2 ชม.", bg:"#ffcf9e", emo:"🐋"},
   {id:"gift", cat:"drama", title:"ของขวัญที่ทำเอง", line:"ละครสั้น 30 วิ เด็กคนหนึ่งตั้งใจทำของขวัญวันเกิดให้แม่ จบแบบอบอุ่นหัวใจ", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#fff1c9", emo:"🎁"},
   {id:"door", cat:"funny", title:"Giraffe Boy vs ประตูกระจก", line:"คลิปสั้น 18 วิ · มุกตลกสั้นแบบหนังเงียบ เดินมาอย่างมั่นใจ แล้ว... ปัง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/glass-door.mp4", poster:"p/glass-door.jpg", wide:true, tools:"Google Flow", time:"~1 ชม.", bg:"#e9e1d6", emo:"🚪"},
   {id:"drawing", cat:"funny", title:"POV: ภาพวาดของลูกขยับได้", line:"เทรนด์ยอดฮิต เอาภาพวาดบนกระดาษมาทำให้มีชีวิต ทำได้ในคาบเดียว", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#d9f3fd", emo:"🖍️"},
-  {id:"zombie", cat:"horror", title:"ซอมบี้บุกบ้าน (แต่แค่หิวส้มตำ)", line:"สยองขวัญแบบขำๆ ซอมบี้เดินเข้าครัว ทุกคนหนี สุดท้ายมันแค่หิว", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#b9e4a8", emo:"🧟"},
+  {id:"zombie", cat:"style", title:"แล็บผสมจินตนาการ", line:"Giraffe Boy กับ Giraffe Girl เทไอเดียผสมกันในขวดเดียว ได้ 4 โลก 4 สไตล์ในคลิปเดียว", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#b9e4a8", emo:"🧪"},
   {id:"professor", cat:"science", title:"สัมภาษณ์ ศ.ยีราฟ", line:"คลิปสั้น 15 วิ · แนวสารคดีสัมภาษณ์ ตัวละครสมจริง 720p พร้อมซับไทย–อังกฤษ", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/professor-giraffe.mp4", poster:"p/professor-giraffe.jpg", wide:true, tools:"Google Flow (Omni 1.2) 720p + ตัดต่อ ใส่ซับ", time:"30 นาที", bg:"#c9e7ff", emo:"🪐"}
 ];
 /* คลิปทีเซอร์บนหัวเว็บ (16:9 วนลูป ปิดเสียง) ใส่ไฟล์ใน v/ แล้วกรอก src */
