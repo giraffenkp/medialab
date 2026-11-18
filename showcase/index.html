@@ -95,7 +95,6 @@ section{padding:34px 0 60px}
 .poster .boy{position:absolute;right:-8px;bottom:-6px;width:42%;opacity:.95}
 .poster .ch{position:absolute;top:10px;left:10px;background:var(--ink);color:var(--sun2);font-size:11px;padding:3px 8px;border-radius:6px}
 .poster .st{position:absolute;top:10px;right:10px;font-family:"Mitr";font-size:12px;padding:2px 10px;border-radius:999px;border:2px solid var(--line)}
-.st.live{background:#e0263f;color:#fff}
 .st.soon{background:var(--paper)}
 .poster .play{position:absolute;inset:auto auto 12px 12px;width:46px;height:46px;border-radius:50%;background:var(--sun);border:2.5px solid var(--line);display:grid;place-items:center;font-size:18px;box-shadow:3px 3px 0 var(--line)}
 .poster .grain{position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(42,28,18,.10) 1px,transparent 0) 0 0/14px 14px}
@@ -248,9 +247,9 @@ const CLIPS = [
   {id:"cat", cat:"edu", title:"Dr.Spelling ถอดรหัสคำว่า RUN", line:"คลิปสอนสะกดคำ 34 วิ ที่ใช้จริงในเพจยีราฟ นครพนม · R-U-N อ่านว่า รัน แปลว่า วิ่ง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/dr-spelling-run.mp4", poster:"p/dr-spelling-run.jpg", tools:"Google Flow (Omni 1.2) + ตัดต่อ ใส่ตัวอักษร", time:"1 ชั่วโมง", bg:"#ffe3ef", emo:"🔤"},
   {id:"science", cat:"science", title:"ภูเขาไฟฟองยักษ์", line:"Giraffe Boy เทสารในขวดทดลองแล้วฟองพุ่งท่วมห้องแล็บ พร้อมอธิบายว่าทำไม", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#d7f5dc", emo:"🌋"},
   {id:"game", cat:"game", title:"หลุดเข้าไปในเกม 8-bit", line:"กดปุ่มผิดครั้งเดียว Giraffe Boy กลายเป็นตัวละครพิกเซลต้องผ่านด่านให้ได้", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#c9b6ff", emo:"🕹️"},
-  {id:"whale", cat:"surreal", title:"วาฬบินเหนือแม่น้ำโขง", line:"วิดีโออาร์ตยามเช้า วาฬกระดาษลอยข้ามเมือง ภาพแบบในความฝัน", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/whale-mekong.mp4", poster:"p/whale-mekong.jpg", tools:"Google Flow", time:"32 วิ", bg:"#ffcf9e", emo:"🐋"},
+  {id:"whale", cat:"surreal", title:"วาฬบินเหนือแม่น้ำโขง", line:"คลิปสั้น 32 วิ · วิดีโออาร์ตยามเช้า วาฬกระดาษลอยข้ามเมือง ภาพแบบในความฝัน", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/whale-mekong.mp4", poster:"p/whale-mekong.jpg", tools:"Google Flow", time:"~2 ชม.", bg:"#ffcf9e", emo:"🐋"},
   {id:"gift", cat:"drama", title:"ของขวัญที่ทำเอง", line:"ละครสั้น 30 วิ เด็กคนหนึ่งตั้งใจทำของขวัญวันเกิดให้แม่ จบแบบอบอุ่นหัวใจ", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#fff1c9", emo:"🎁"},
-  {id:"door", cat:"funny", title:"Giraffe Boy vs ประตูกระจก", line:"มุกตลกสั้นแบบหนังเงียบ เดินมาอย่างมั่นใจ แล้ว... ปัง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/glass-door.mp4", poster:"p/glass-door.jpg", wide:true, tools:"Google Flow", time:"18 วิ", bg:"#e9e1d6", emo:"🚪"},
+  {id:"door", cat:"funny", title:"Giraffe Boy vs ประตูกระจก", line:"คลิปสั้น 18 วิ · มุกตลกสั้นแบบหนังเงียบ เดินมาอย่างมั่นใจ แล้ว... ปัง", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/glass-door.mp4", poster:"p/glass-door.jpg", wide:true, tools:"Google Flow", time:"~1 ชม.", bg:"#e9e1d6", emo:"🚪"},
   {id:"drawing", cat:"funny", title:"POV: ภาพวาดของลูกขยับได้", line:"เทรนด์ยอดฮิต เอาภาพวาดบนกระดาษมาทำให้มีชีวิต ทำได้ในคาบเดียว", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#d9f3fd", emo:"🖍️"},
   {id:"zombie", cat:"horror", title:"ซอมบี้บุกบ้าน (แต่แค่หิวส้มตำ)", line:"สยองขวัญแบบขำๆ ซอมบี้เดินเข้าครัว ทุกคนหนี สุดท้ายมันแค่หิว", by:"teacher", maker:"ครู Gu Guy", room:"creator", tools:"Google Flow", time:"—", bg:"#b9e4a8", emo:"🧟"},
   {id:"professor", cat:"science", title:"สัมภาษณ์ ศ.ยีราฟ", line:"คลิปสั้น 15 วิ · แนวสารคดีสัมภาษณ์ ตัวละครสมจริง 720p พร้อมซับไทย–อังกฤษ", by:"teacher", maker:"ครู Gu Guy", room:"creator", src:"v/professor-giraffe.mp4", poster:"p/professor-giraffe.jpg", wide:true, tools:"Google Flow (Omni 1.2) 720p + ตัดต่อ ใส่ซับ", time:"30 นาที", bg:"#c9e7ff", emo:"🪐"}
@@ -286,7 +285,7 @@ function render(){
       <div class="poster" style="background:${c.bg}">
         ${poster(c)}
         <span class="ch px">CH.${String(CLIPS.indexOf(c)+1).padStart(2,"0")}</span>
-        <span class="st ${live(c)?"live":"soon"}">${live(c)?"● ฉายแล้ว":"เร็วๆ นี้"}</span>
+        ${live(c)?"":`<span class="st soon">เร็วๆ นี้</span>`}
         ${live(c)?`<span class="play">▶</span>`:""}
       </div>
       <div class="meta">
